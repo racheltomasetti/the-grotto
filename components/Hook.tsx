@@ -1,16 +1,10 @@
 export default function Hook() {
   return (
     <section className="w-full bg-[#0a0a0a] text-[var(--color-mist)]">
-      <div className="mx-auto flex w-full max-w-5xl items-start justify-center px-6 pb-8 pt-14 text-center md:pb-10 md:pt-20">
-        <div
-          className="w-full max-w-3xl rounded-3xl border border-white/20 bg-white/10 p-8 shadow-2xl backdrop-blur-xl md:p-12"
-          style={{
-            background:
-              "linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.04) 100%)",
-          }}
-        >
+      <div className="mx-auto flex w-full max-w-5xl items-start justify-center px-6 pb-12 pt-18 text-center md:pb-16 md:pt-24">
+        <div className="w-full max-w-3xl px-2 md:px-0">
           <h2
-            className="text-3xl leading-[0.95] md:text-6xl lg:text-7xl"
+            className="text-4xl leading-[0.95] md:text-6xl lg:text-7xl"
             style={{ fontFamily: "var(--font-playfair)" }}
           >
             Your voyage awaits.

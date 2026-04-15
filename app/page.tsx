@@ -1,6 +1,6 @@
 import Anchor from "@/components/Anchor";
 import Hook from "@/components/Hook";
-import Amenities from "@/components/Amenities";
+import Grotto from "@/components/Grotto";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -8,7 +8,7 @@ export default function Home() {
     <main className="bg-[#0a0a0a]">
       <Anchor />
       <Hook />
-      <Amenities />
+      <Grotto />
       <Footer />
     </main>
   );

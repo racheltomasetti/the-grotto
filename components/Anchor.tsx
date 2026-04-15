@@ -16,7 +16,6 @@ export default function HeroScroll() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const overlayTextRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -38,26 +37,6 @@ export default function HeroScroll() {
       if (totalScrollable <= 0) return 0;
       const scrolledWithinSection = -rect.top;
       return clamp01(scrolledWithinSection / totalScrollable);
-    };
-
-    const setupSharedTextAnimations = () => {
-      const fadeStart = isMobileViewport ? "45% top" : "55% top";
-      const fadeEnd = isMobileViewport ? "55% top" : "75% top";
-      gsap.fromTo(
-        overlayTextRef.current,
-        { opacity: 1, y: 0 },
-        {
-          opacity: 0,
-          y: -40,
-          scrollTrigger: {
-            trigger: section,
-            // Mobile fades sooner so final wave frames are clean.
-            start: fadeStart,
-            end: fadeEnd,
-            scrub: true,
-          },
-        }
-      );
     };
 
     const initMobileFrames = async () => {
@@ -210,7 +189,6 @@ export default function HeroScroll() {
       window.addEventListener("touchmove", requestUpdate, { passive: true });
       window.addEventListener("resize", requestUpdate);
       window.addEventListener("orientationchange", requestUpdate);
-      setupSharedTextAnimations();
 
       ScrollTrigger.refresh();
 
@@ -240,8 +218,6 @@ export default function HeroScroll() {
             video.currentTime = self.progress * duration;
           },
         });
-
-        setupSharedTextAnimations();
         ScrollTrigger.refresh();
       };
 
@@ -310,12 +286,9 @@ export default function HeroScroll() {
         />
 
         {/* Hero text */}
-        <div
-          ref={overlayTextRef}
-          className="absolute inset-0 flex flex-col items-center justify-center text-center px-6"
-        >
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
           <h1
-            className="text-5xl md:text-7xl lg:text-8xl font-bold leading-none"
+            className="text-6xl md:text-7xl lg:text-8xl font-bold leading-none"
             style={{
               fontFamily: "var(--font-playfair)",
               color: "var(--color-mist)",
