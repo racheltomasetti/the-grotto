@@ -6,8 +6,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const TOTAL_FRAMES = 161;
-const FRAME_PATH = (n: number) => `/frames/frame-${String(n).padStart(4, "0")}.jpg`;
+const TOTAL_FRAMES = 140;
+const FRAME_SEQUENCE_VERSION = "2026-04-15-b";
+const FRAME_PATH = (n: number) =>
+  `/frames/frame-${String(n).padStart(4, "0")}.jpg?v=${FRAME_SEQUENCE_VERSION}`;
 const MOBILE_PROGRESS_MULTIPLIER = 1.2;
 
 export default function HeroScroll() {
@@ -35,7 +37,7 @@ export default function HeroScroll() {
           const probe = new Image();
           probe.onload = () => resolve(true);
           probe.onerror = () => resolve(false);
-          probe.src = `/frames/frame-0001.${ext}`;
+          probe.src = `/frames/frame-0001.${ext}?v=${FRAME_SEQUENCE_VERSION}`;
         });
 
       if (await canLoad("jpg")) return "jpg";
@@ -45,7 +47,7 @@ export default function HeroScroll() {
 
     const clamp01 = (value: number) => Math.max(0, Math.min(1, value));
     const framePathWithExt = (index: number, ext: "jpg" | "webp") =>
-      `/frames/frame-${String(index).padStart(4, "0")}.${ext}`;
+      `/frames/frame-${String(index).padStart(4, "0")}.${ext}?v=${FRAME_SEQUENCE_VERSION}`;
 
     const computeProgress = () => {
       const rect = section.getBoundingClientRect();
