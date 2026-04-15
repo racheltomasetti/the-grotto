@@ -17,7 +17,6 @@ export default function HeroScroll() {
   const imgRef = useRef<HTMLImageElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const overlayTextRef = useRef<HTMLDivElement>(null);
-  const scrollPromptRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -58,26 +57,23 @@ export default function HeroScroll() {
     };
 
     const setupSharedTextAnimations = () => {
-      gsap.to(overlayTextRef.current, {
-        opacity: 0,
-        y: -40,
-        scrollTrigger: {
-          trigger: section,
-          start: "top top",
-          end: "15% top",
-          scrub: true,
-        },
-      });
-
-      gsap.to(scrollPromptRef.current, {
-        opacity: 0,
-        scrollTrigger: {
-          trigger: section,
-          start: "top top",
-          end: "5% top",
-          scrub: true,
-        },
-      });
+      const fadeStart = isMobileViewport ? "45% top" : "55% top";
+      const fadeEnd = isMobileViewport ? "55% top" : "75% top";
+      gsap.fromTo(
+        overlayTextRef.current,
+        { opacity: 1, y: 0 },
+        {
+          opacity: 0,
+          y: -40,
+          scrollTrigger: {
+            trigger: section,
+            // Mobile fades sooner so final wave frames are clean.
+            start: fadeStart,
+            end: fadeEnd,
+            scrub: true,
+          },
+        }
+      );
     };
 
     const initMobileFrames = async () => {
@@ -314,15 +310,12 @@ export default function HeroScroll() {
           ref={overlayTextRef}
           className="absolute inset-0 flex flex-col items-center justify-center text-center px-6"
         >
-          <p
-            className="text-xs uppercase tracking-[0.4em] mb-4 opacity-70"
-            style={{ fontFamily: "var(--font-dm-sans)", color: "var(--color-warm)" }}
-          >
-            A hidden world awaits
-          </p>
           <h1
-            className="text-5xl md:text-7xl lg:text-8xl font-bold leading-none mb-6"
-            style={{ fontFamily: "var(--font-playfair)", color: "var(--color-mist)" }}
+            className="text-5xl md:text-7xl lg:text-8xl font-bold leading-none"
+            style={{
+              fontFamily: "var(--font-playfair)",
+              color: "var(--color-mist)",
+            }}
           >
             The Grotto
           </h1>
@@ -334,19 +327,6 @@ export default function HeroScroll() {
           </p> */}
         </div>
 
-        {/* Scroll prompt */}
-        <div
-          ref={scrollPromptRef}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-        >
-          <p
-            className="text-xs uppercase tracking-[0.3em] opacity-50"
-            style={{ color: "var(--color-mist)" }}
-          >
-            Scroll to enter
-          </p>
-          <div className="w-px h-10 bg-gradient-to-b from-transparent to-white opacity-30 animate-pulse" />
-        </div>
       </div>
     </div>
   );
