@@ -10,7 +10,7 @@ export default function Hook() {
           }}
         >
           <h2
-            className="text-4xl leading-[0.95] md:text-6xl lg:text-7xl"
+            className="text-3xl leading-[0.95] md:text-6xl lg:text-7xl"
             style={{ fontFamily: "var(--font-playfair)" }}
           >
             Your voyage awaits.
