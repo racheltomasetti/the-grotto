@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+:root {
+  --font-playfair: 'Playfair Display', serif;
+  --font-dm-sans: 'DM Sans', sans-serif;
+  --color-moss: #2d4a2d;
+  --color-cave: #0a0a0a;
+  --color-warm: #c8a96e;
+  --color-glow: #7fff7f;
+  --color-mist: #e8e4dc;
+}
+
+html {
+  scroll-behavior: auto; /* GSAP handles this */
+}
+
+body {
+  background-color: var(--color-cave);
+  color: var(--color-mist);
+  font-family: var(--font-dm-sans);
+  overflow-x: hidden;
+}
+
+/* Hide scrollbar on hero but keep functionality */
+.hero-scroll-container {
+  scrollbar-width: none;
+}
+.hero-scroll-container::-webkit-scrollbar {
+  display: none;
+}
