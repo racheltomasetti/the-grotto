@@ -68,7 +68,7 @@ export default function Grotto() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative mx-auto max-w-6xl px-6 pb-24 pt-8 md:pb-36 md:pt-12">
+    <section ref={sectionRef} className="relative mx-auto max-w-6xl px-6 pb-0 pt-8 md:pt-12">
 
       {/* Feature cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">

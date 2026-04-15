@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "The Grotto — An Unforgettable Stay",
+  title: "The Grotto",
   description: "A one-of-a-kind boat cabin nestled in a moss-covered grotto. Cold plunge, sauna, outdoor kitchen.",
 };
 
