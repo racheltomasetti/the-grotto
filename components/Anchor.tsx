@@ -30,23 +30,7 @@ export default function HeroScroll() {
     // Keep behavior aligned with CSS breakpoints used for rendering.
     const isMobileViewport = window.matchMedia("(max-width: 767px)").matches;
 
-    const detectFrameExt = async (): Promise<"jpg" | "webp"> => {
-      const canLoad = (ext: "jpg" | "webp") =>
-        new Promise<boolean>((resolve) => {
-          const probe = new Image();
-          probe.onload = () => resolve(true);
-          probe.onerror = () => resolve(false);
-          probe.src = `/frames/frame-0001.${ext}?v=${FRAME_SEQUENCE_VERSION}`;
-        });
-
-      if (await canLoad("jpg")) return "jpg";
-      if (await canLoad("webp")) return "webp";
-      return "jpg";
-    };
-
     const clamp01 = (value: number) => Math.max(0, Math.min(1, value));
-    const framePathWithExt = (index: number, ext: "jpg" | "webp") =>
-      `/frames/frame-${String(index).padStart(4, "0")}.${ext}?v=${FRAME_SEQUENCE_VERSION}`;
 
     const computeProgress = () => {
       const rect = section.getBoundingClientRect();
@@ -77,8 +61,19 @@ export default function HeroScroll() {
     };
 
     const initMobileFrames = async () => {
-      const ext = await detectFrameExt();
       if (isDisposed) return;
+
+      const nav = navigator as Navigator & {
+        connection?: {
+          effectiveType?: string;
+          saveData?: boolean;
+        };
+      };
+      const effectiveType = nav.connection?.effectiveType ?? "4g";
+      const isConstrainedNetwork =
+        effectiveType === "slow-2g" || effectiveType === "2g";
+      const isMidNetwork = effectiveType === "3g";
+      const prefersDataSaver = Boolean(nav.connection?.saveData);
 
       const frameCache = new Map<number, HTMLImageElement>();
       const loadedFrames = new Set<number>();
@@ -105,15 +100,18 @@ export default function HeroScroll() {
         preload.onload = () => {
           loadedFrames.add(frameIndex);
         };
-        preload.src = framePathWithExt(frameIndex, ext);
+        preload.src = FRAME_PATH(frameIndex);
         frameCache.set(frameIndex, preload);
       };
 
       const pumpQueue = () => {
         if (isDisposed || loadQueue.length === 0) return;
-        const next = loadQueue.shift();
-        if (typeof next === "number") {
-          primeFrame(next);
+        const loadsPerTick = isConstrainedNetwork || prefersDataSaver ? 1 : 2;
+        for (let i = 0; i < loadsPerTick; i++) {
+          const next = loadQueue.shift();
+          if (typeof next === "number") {
+            primeFrame(next);
+          }
         }
         const idleCallback = (
           globalThis as typeof globalThis & {
@@ -130,8 +128,14 @@ export default function HeroScroll() {
         }
       };
 
-      // Keep mobile lighter up front, then continue loading the rest in background.
-      const initialPreloadCount = isMobileViewport ? 36 : 40;
+      // Tune initial preload for connection quality to improve perceived sync.
+      const initialPreloadCount = prefersDataSaver
+        ? 18
+        : isConstrainedNetwork
+          ? 22
+          : isMidNetwork
+            ? 30
+            : 42;
       for (let i = 1; i <= Math.min(TOTAL_FRAMES, initialPreloadCount); i++) {
         primeFrame(i);
       }
@@ -166,7 +170,7 @@ export default function HeroScroll() {
           return;
         }
         // Worst-case fallback; should be rare once preloading ramps up.
-        img.src = framePathWithExt(frameIndex, ext);
+        img.src = FRAME_PATH(frameIndex);
         displayedFrame = frameIndex;
       };
 
@@ -197,8 +201,8 @@ export default function HeroScroll() {
         rafId = requestAnimationFrame(updateFrame);
       };
 
-      // Render the first frame immediately with the detected extension.
-      img.src = framePathWithExt(1, ext);
+      // Render the first frame immediately.
+      img.src = FRAME_PATH(1);
       displayedFrame = 1;
       requestUpdate();
 

@@ -72,7 +72,7 @@ export default function Amenities() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative px-6 py-24 md:py-36 max-w-6xl mx-auto">
+    <section ref={sectionRef} className="relative mx-auto max-w-6xl px-6 pb-24 pt-8 md:pb-36 md:pt-12">
       {/* Section header */}
       <div className="mb-20 md:mb-28">
         <p
