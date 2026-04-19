@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Fireflies from "@/components/Fireflies";
 
 export const metadata: Metadata = {
   title: "The Grotto",
@@ -23,6 +24,7 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased">
+        <Fireflies />
         {children}
       </body>
     </html>

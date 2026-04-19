@@ -254,7 +254,7 @@ export default function HeroScroll() {
 
   return (
     <div ref={sectionRef} className="relative h-[300vh] md:h-[400vh]">
-      <div className="sticky top-0 h-[90vh] md:h-screen w-full overflow-hidden">
+      <div className="sticky top-0 z-20 h-[90vh] md:h-screen w-full overflow-hidden">
         <video
           ref={videoRef}
           src="/video/the-grotto.mp4"
@@ -307,6 +307,8 @@ export default function HeroScroll() {
           </p> */}
         </div>
 
+        {/* Cover subpixel canvas artifact at sticky div clip boundary */}
+        <div className="absolute bottom-0 inset-x-0 h-[2px] bg-[var(--color-midnight)]" />
       </div>
     </div>
   );

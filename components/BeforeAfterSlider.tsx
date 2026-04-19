@@ -60,7 +60,7 @@ export default function BeforeAfterSlider({
   return (
     <div
       ref={containerRef}
-      className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/10 select-none cursor-col-resize"
+      className="relative z-20 aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/10 select-none cursor-col-resize"
       onMouseDown={(e) => {
         isDragging.current = true;
         updatePosition(e.clientX);

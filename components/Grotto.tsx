@@ -1,11 +1,3 @@
-"use client";
-
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
-
 const features = [
   {
     id: "quarters",
@@ -42,40 +34,14 @@ const features = [
 ];
 
 export default function Grotto() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  useEffect(() => {
-    cardRefs.current.forEach((card, i) => {
-      if (!card) return;
-      gsap.fromTo(
-        card,
-        { opacity: 0, y: 60 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: card,
-            start: "top 85%",
-            toggleActions: "play none none none",
-          },
-          delay: i * 0.05,
-        }
-      );
-    });
-  }, []);
-
   return (
-    <section ref={sectionRef} className="relative mx-auto max-w-6xl px-6 pb-0 pt-8 md:pt-12">
+    <section className="relative z-20 mx-auto max-w-6xl px-6 pb-0 pt-8 md:pt-12">
 
       {/* Feature cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-        {features.map((feature, i) => (
+        {features.map((feature) => (
           <div
             key={feature.id}
-            ref={(el) => { cardRefs.current[i] = el; }}
             className="group relative overflow-hidden rounded-2xl border border-white/10"
             style={{
               /* Stay above canvas (--color-midnight); never blend down to it or cards read darker than the page */
