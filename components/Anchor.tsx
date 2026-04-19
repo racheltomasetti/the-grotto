@@ -279,10 +279,13 @@ export default function HeroScroll() {
           }}
         />
 
-        {/* Bottom gradient */}
+        {/* Bottom gradient — alpha fade on midnight RGB only (transparent→solid crosses wrong hues and reads as a hard line) */}
         <div
-          className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none"
-          style={{ background: "linear-gradient(to bottom, transparent, #0a0a0a)" }}
+          className="pointer-events-none absolute bottom-0 left-0 right-0 h-52 md:h-64"
+          style={{
+            background:
+              "linear-gradient(to bottom, rgb(var(--color-midnight-rgb) / 0) 0%, rgb(var(--color-midnight-rgb) / 0.28) 38%, rgb(var(--color-midnight-rgb) / 0.72) 72%, rgb(var(--color-midnight-rgb) / 1) 100%)",
+          }}
         />
 
         {/* Hero text */}

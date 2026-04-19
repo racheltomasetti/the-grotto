@@ -76,9 +76,11 @@ export default function Grotto() {
           <div
             key={feature.id}
             ref={(el) => { cardRefs.current[i] = el; }}
-            className="group relative rounded-2xl overflow-hidden border border-white/5"
+            className="group relative overflow-hidden rounded-2xl border border-white/10"
             style={{
-              background: "linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)",
+              /* Stay above canvas (--color-midnight); never blend down to it or cards read darker than the page */
+              background:
+                "linear-gradient(135deg, rgb(38, 40, 54) 0%, rgb(30, 30, 42) 100%)",
               backdropFilter: "blur(10px)",
             }}
           >
@@ -94,7 +96,7 @@ export default function Grotto() {
                 />
               ) : (
                 <div className="absolute inset-0 flex items-center justify-center opacity-20">
-                  <p className="text-xs tracking-widest uppercase" style={{ color: "var(--color-warm)" }}>
+                  <p className="text-xs tracking-widest uppercase" style={{ color: "var(--color-moss)" }}>
                     {feature.label}
                   </p>
                 </div>
@@ -109,10 +111,7 @@ export default function Grotto() {
               >
                 {feature.headline}
               </h3>
-              <p
-                className="text-sm leading-relaxed opacity-60"
-                style={{ color: "var(--color-mist)" }}
-              >
+              <p className="text-sm leading-relaxed opacity-75" style={{ color: "var(--color-mist)" }}>
                 {feature.description}
               </p>
             </div>

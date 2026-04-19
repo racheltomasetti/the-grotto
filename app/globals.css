@@ -1,22 +1,39 @@
 @import "tailwindcss";
 
 :root {
-  --font-playfair: 'Playfair Display', serif;
-  --font-dm-sans: 'DM Sans', sans-serif;
-  --color-moss: #2d4a2d;
-  --color-cave: #0a0a0a;
-  --color-warm: #c8a96e;
-  --color-glow: #7fff7f;
-  --color-mist: #e8e4dc;
+  --font-header: 'Playfair Display', serif;
+  --font-body: 'DM Sans', sans-serif;
+
+  /* Canvas — near-neutral with slight cool lift */
+  --color-midnight: rgb(17, 17, 26);
+  /* Space-separated RGB for alpha fades (same hue end-to-end — avoids harsh “transparent” bands) */
+  --color-midnight-rgb: 17 17 26;
+  --color-midnight-surface: rgb(30, 30, 42);
+  --color-charcoal: var(--color-midnight);
+  --color-charcoal-surface: var(--color-midnight-surface);
+  --color-parchment: #f6f1e6;
+  --color-pacific: #58a4b0;
+  --color-firefly: #efc868;
+  --color-moss: #67934d;
+
+  /* Backward-compatible aliases for current components */
+  --font-playfair: var(--font-header);
+  --font-dm-sans: var(--font-body);
+  --color-cave: var(--color-midnight);
+  --color-warm: var(--color-firefly);
+  --color-mist: var(--color-parchment);
+  --color-glow: var(--color-pacific);
 }
 
 html {
   scroll-behavior: auto; /* GSAP handles this */
+  background-color: var(--color-midnight);
 }
 
 body {
-  background-color: var(--color-cave);
-  color: var(--color-mist);
+  min-height: 100dvh;
+  background-color: var(--color-midnight);
+  color: var(--color-parchment);
   font-family: var(--font-dm-sans);
   overflow-x: hidden;
 }

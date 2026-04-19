@@ -4,6 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "The Grotto",
   description: "A one-of-a-kind boat cabin nestled in a moss-covered grotto. Cold plunge, sauna, outdoor kitchen.",
+  themeColor: "#11111a",
 };
 
 export default function RootLayout({

@@ -1,6 +1,6 @@
 export default function Hook() {
   return (
-    <section className="w-full bg-[#0a0a0a] text-[var(--color-mist)]">
+    <section className="w-full bg-[var(--color-midnight)] text-[var(--color-mist)]">
       <div className="mx-auto flex w-full max-w-5xl items-start justify-center px-6 pb-12 pt-18 text-center md:pb-16 md:pt-24">
         <div className="w-full max-w-3xl px-2 md:px-0">
           <h2
