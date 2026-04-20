@@ -60,15 +60,7 @@ export default function BeforeAfterSlider({
   return (
     <div
       ref={containerRef}
-      className="relative z-20 aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/10 select-none cursor-col-resize"
-      onMouseDown={(e) => {
-        isDragging.current = true;
-        updatePosition(e.clientX);
-      }}
-      onTouchStart={(e) => {
-        isDragging.current = true;
-        updatePosition(e.touches[0].clientX);
-      }}
+      className="relative z-20 aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/10 select-none"
     >
       {/* Before image — full width base layer */}
       <img
@@ -89,7 +81,14 @@ export default function BeforeAfterSlider({
 
       {/* Divider line */}
       <div
-        className="absolute inset-y-0 w-px pointer-events-none"
+        className="absolute inset-y-0 w-px cursor-col-resize"
+        onMouseDown={(e) => {
+          e.preventDefault();
+          isDragging.current = true;
+        }}
+        onTouchStart={(e) => {
+          isDragging.current = true;
+        }}
         style={{
           left: `${position}%`,
           transform: "translateX(-50%)",

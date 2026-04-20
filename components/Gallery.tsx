@@ -90,7 +90,7 @@ export default function Gallery() {
       : "A world of its own. The Grotto after dark.";
 
   return (
-    <section className="relative z-20 mx-auto max-w-6xl px-6 pt-16 pb-8 md:pt-20 md:pb-12">
+    <section className="relative z-20 mx-auto max-w-6xl px-6 pb-12 pt-18 md:pb-16 md:pt-24">
 
       {/* Fixed headline */}
       <div className="mx-auto mb-6 w-full max-w-3xl px-2 text-center md:mb-10 md:px-0">
