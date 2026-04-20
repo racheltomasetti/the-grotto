@@ -83,11 +83,11 @@ function Columns({ cols, height }: { cols: Img[][]; height: string }) {
 
 export default function Gallery() {
   const [mode, setMode] = useState<"day" | "night">("day");
-  const layout = layouts[mode];
+
   const body =
     mode === "day"
-      ? "The day starts here. Make it yours."
-      : "A world of its own. The Grotto after dark.";
+      ? "Your day starts here. Chart your course."
+      : "A world of your own. The Grotto after dark.";
 
   return (
     <section className="relative z-20 mx-auto max-w-6xl px-6 pb-12 pt-18 md:pb-16 md:pt-24">
@@ -180,14 +180,38 @@ export default function Gallery() {
         </p>
       </div>
 
-      {/* Mobile: 2 cols */}
-      <div className="md:hidden" key={`${mode}-mobile`} style={{ animation: "galleryFadeIn 0.4s ease-out" }}>
-        <Columns cols={layout.mobile} height="min(85vh, 640px)" />
+      {/* Mobile: 2 cols — both sets always in DOM, cross-fade via opacity */}
+      <div className="md:hidden relative" style={{ height: "min(85vh, 640px)" }}>
+        {(["day", "night"] as const).map((m) => (
+          <div
+            key={m}
+            style={{
+              position: "absolute", inset: 0,
+              opacity: mode === m ? 1 : 0,
+              transition: mode === m ? "opacity 0.35s ease" : "none",
+              pointerEvents: mode === m ? "auto" : "none",
+            }}
+          >
+            <Columns cols={layouts[m].mobile} height="min(85vh, 640px)" />
+          </div>
+        ))}
       </div>
 
-      {/* Desktop: 3 cols */}
-      <div className="hidden md:block" key={`${mode}-desktop`} style={{ animation: "galleryFadeIn 0.4s ease-out" }}>
-        <Columns cols={layout.desktop} height="min(78vh, 680px)" />
+      {/* Desktop: 3 cols — same approach */}
+      <div className="hidden md:block relative" style={{ height: "min(78vh, 680px)" }}>
+        {(["day", "night"] as const).map((m) => (
+          <div
+            key={m}
+            style={{
+              position: "absolute", inset: 0,
+              opacity: mode === m ? 1 : 0,
+              transition: mode === m ? "opacity 0.35s ease" : "none",
+              pointerEvents: mode === m ? "auto" : "none",
+            }}
+          >
+            <Columns cols={layouts[m].desktop} height="min(78vh, 680px)" />
+          </div>
+        ))}
       </div>
 
       <style>{`

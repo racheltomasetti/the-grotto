@@ -86,7 +86,7 @@ export default function BeforeAfterSlider({
           e.preventDefault();
           isDragging.current = true;
         }}
-        onTouchStart={(e) => {
+        onTouchStart={() => {
           isDragging.current = true;
         }}
         style={{
