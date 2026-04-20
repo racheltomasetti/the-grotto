@@ -40,8 +40,8 @@ const layouts = {
   night: {
     desktop: [
       [night[1], night[0]], // sauna(portrait)               + frontal
-      [{ ...night[2], ar: 2048 / 1536 }, night[3]], // garden(normalized to match) + shower
-      [night[4], night[5]], // left-grotto           + plunge
+      [night[4], night[3]], // left-grotto           + plunge
+      [{ ...night[2], ar: 2048 / 1536 }, night[5]], // garden(normalized to match) + shower
     ],
     mobile: [
       [night[1], night[2], night[0]], // garden + frontal + sauna
