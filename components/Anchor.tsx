@@ -299,12 +299,6 @@ export default function HeroScroll() {
           >
             The Grotto
           </h1>
-          {/* <p
-            className="text-base md:text-lg max-w-sm opacity-60"
-            style={{ fontFamily: "var(--font-dm-sans)", color: "var(--color-mist)" }}
-          >
-            A boat cabin. A cave. A night you won't forget.
-          </p> */}
         </div>
 
         {/* Cover subpixel canvas artifact at sticky div clip boundary */}
