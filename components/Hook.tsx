@@ -10,7 +10,7 @@ export default function Hook() {
             Your voyage awaits.
           </h2>
           <p
-            className="mt-8 text-base leading-relaxed text-[var(--color-mist)]/80 md:text-lg"
+            className="mt-8 text-base leading-relaxed text-[var(--color-mist)]/80 md:text-xl"
             style={{ fontFamily: "var(--font-dm-sans)" }}
           >
             Tucked away in the heart of Miami lives a cavern lit by stars. A lush,

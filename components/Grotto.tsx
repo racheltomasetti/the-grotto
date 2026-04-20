@@ -58,7 +58,7 @@ export default function Grotto() {
                 <img
                   src={feature.image}
                   alt={feature.label}
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="h-full w-full object-cover"
                 />
               ) : (
                 <div className="absolute inset-0 flex items-center justify-center opacity-20">
@@ -77,7 +77,7 @@ export default function Grotto() {
               >
                 {feature.headline}
               </h3>
-              <p className="text-sm leading-relaxed opacity-75" style={{ color: "var(--color-mist)" }}>
+              <p className="text-sm md:text-lg leading-relaxed opacity-75" style={{ color: "var(--color-mist)" }}>
                 {feature.description}
               </p>
             </div>

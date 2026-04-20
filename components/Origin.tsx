@@ -6,7 +6,7 @@ const AFTER = "/images/after.jpg";
 export default function Origin() {
   return (
     <section className="w-full bg-[var(--color-midnight)] text-[var(--color-mist)]">
-      <div className="mx-auto flex w-full max-w-5xl items-start justify-center px-6 pb-8 text-center md:pb-10 pt-18 md:pt-24">
+      <div className="mx-auto flex w-full max-w-5xl items-start justify-center px-6 pb-8 text-center md:pb-10 pt-10 md:pt-14">
         <div className="w-full max-w-3xl px-2 md:px-0">
           <h2
             className="text-4xl leading-[0.95] md:text-6xl lg:text-7xl"
@@ -15,7 +15,7 @@ export default function Origin() {
             How it began.
           </h2>
           <p
-            className="mt-8 text-base leading-relaxed text-[var(--color-mist)]/80 md:text-lg"
+            className="mt-8 text-base leading-relaxed text-[var(--color-mist)]/80 md:text-xl"
             style={{ fontFamily: "var(--font-dm-sans)" }}
           >
             It started with a retired vessel and a vision. The Scanlon family — Miami born and
