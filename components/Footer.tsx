@@ -4,7 +4,7 @@ const VRBO_URL = "https://www.vrbo.com/5225632?dateless=true";
 
 export default function Footer() {
   const ctaClassName =
-    "inline-flex h-[96px] w-[230px] flex-col items-center justify-center rounded-[28px] border border-[var(--color-firefly)]/50 bg-transparent px-6 transition-colors hover:border-[var(--color-firefly)] hover:bg-[var(--color-firefly)]/8";
+    "inline-flex h-[84px] w-[200px] flex-col items-center justify-center rounded-[24px] border border-[var(--color-firefly)]/50 bg-transparent px-5 transition-colors hover:border-[var(--color-firefly)] hover:bg-[var(--color-firefly)]/8 sm:h-[96px] sm:w-[230px] sm:rounded-[28px] sm:px-6";
 
   return (
     <footer className="border-t border-white/5 px-6 py-16 text-center">
@@ -16,10 +16,10 @@ export default function Footer() {
           className={ctaClassName}
           style={{ fontFamily: "var(--font-body)" }}
         >
-          <span className="text-xl font-medium tracking-[0.03em] text-[var(--color-firefly)]">
+          <span className="text-lg font-medium tracking-[0.03em] text-[var(--color-firefly)] sm:text-xl">
             Airbnb
           </span>
-          <span className="mt-1 text-sm uppercase tracking-[0.22em] text-[var(--color-mist)]/65">
+          <span className="mt-1 text-xs uppercase tracking-[0.2em] text-[var(--color-mist)]/65 sm:text-sm sm:tracking-[0.22em]">
             Book Now
           </span>
         </a>
@@ -30,10 +30,10 @@ export default function Footer() {
           className={ctaClassName}
           style={{ fontFamily: "var(--font-body)" }}
         >
-          <span className="text-xl font-medium tracking-[0.08em] text-[var(--color-firefly)]">
+          <span className="text-lg font-medium tracking-[0.08em] text-[var(--color-firefly)] sm:text-xl">
             VRBO
           </span>
-          <span className="mt-1 text-sm uppercase tracking-[0.22em] text-[var(--color-mist)]/65">
+          <span className="mt-1 text-xs uppercase tracking-[0.2em] text-[var(--color-mist)]/65 sm:text-sm sm:tracking-[0.22em]">
             Book Now
           </span>
         </a>
