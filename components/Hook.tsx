@@ -1,3 +1,5 @@
+import CaptainsHandbookUnlock from "@/components/CaptainsHandbookUnlock";
+
 export default function Hook() {
   return (
     <section className="w-full bg-[var(--color-midnight)] text-[var(--color-mist)]">
@@ -17,6 +19,7 @@ export default function Hook() {
             immersive retreat hidden from the outside noise. Come to slow down,
             explore, and recharge.
           </p>
+          <CaptainsHandbookUnlock />
         </div>
       </div>
     </section>
