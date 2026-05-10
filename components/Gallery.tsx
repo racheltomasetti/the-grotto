@@ -6,10 +6,10 @@ type Img = { src: string; alt: string; ar: number }; // ar = height/width
 
 const day: Img[] = [
   { src: "/images/gallery/day/kitchen-day.jpeg",    alt: "Kitchen",     ar: 1535 / 2312 },
-  { src: "/images/gallery/day/bathroom.jpeg",        alt: "Bathroom",    ar: 2312 / 1535 },
+  { src: "/images/gallery/day/fountain.JPG",        alt: "Bathroom",    ar: 2312 / 1535 },
   { src: "/images/gallery/day/couch.JPG",            alt: "Lounge",      ar: 2847 / 4287 },
   { src: "/images/gallery/day/backyard-day.jpeg",    alt: "Backyard",    ar: 2048 / 1536 },
-  { src: "/images/gallery/day/plunge-day.jpeg",      alt: "Cold Plunge", ar: 2048 / 1536 },
+  { src: "/images/gallery/day/bathroom.jpeg",      alt: "Fountain", ar: 2048 / 1536 },
   { src: "/images/gallery/day/side-grotto-day.jpeg", alt: "The Grotto",  ar: 2048 / 1536 },
 ];
 

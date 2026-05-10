@@ -1,4 +1,19 @@
-const features = [
+type Feature = {
+  id: string;
+  label: string;
+  headline: string;
+  description: string;
+  image: string;
+  /** Use `contain` to letterbox; default is cover (fills frame). */
+  imageFit?: "cover" | "contain";
+  /**
+   * With `cover`, bias which part of the photo stays visible when cropping.
+   * `top` uses a soft upper-third anchor (bias toward the top, not the edge).
+   */
+  imagePosition?: "center" | "top" | "bottom";
+};
+
+const features: Feature[] = [
   {
     id: "quarters",
     label: "The Quarters",
@@ -24,12 +39,21 @@ const features = [
     image: "/images/threshold.jpg",
   },
   {
-    id: "cabin",
-    label: "The Cabin",
-    headline: "The Cabin",
+    id: "bridge",
+    label: "The Bridge",
+    headline: "The Bridge",
     description:
-      "Find your focus in the cabin. A private, nautical-themed workspace tucked within the cavern — succulents, cool air, and everything you need within reach. The outside world can wait.",
-    image: "/images/cabin.jpg",
+      "Find your focus in the bridge. A private, nautical-themed workspace tucked within the cavern — succulents, cool air, and everything you need within reach. The outside world can wait.",
+    image: "/images/bridge.jpg",
+  },
+  {
+    id: "head",
+    label: "The Head",
+    headline: "The Head",
+    description:
+      "Your private bathroom, finished with marble tile floors, a walk-in shower, and adjustable lighting. Everything you need to freshen up and get back to it.",
+    image: "/images/head.jpg",
+    imagePosition: "top",
   },
 ];
 
@@ -38,11 +62,15 @@ export default function Grotto() {
     <section className="relative z-20 mx-auto max-w-6xl px-6 pb-0 pt-8 md:pt-12">
 
       {/* Feature cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-        {features.map((feature) => (
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+        {features.map((feature, index) => (
           <div
             key={feature.id}
-            className="group relative overflow-hidden rounded-2xl border border-white/10"
+            className={`group relative overflow-hidden rounded-2xl border border-white/10 ${
+              index === features.length - 1
+                ? "md:col-span-2 md:w-[calc((100%-2rem)/2)] md:max-w-none md:justify-self-center"
+                : ""
+            }`}
             style={{
               /* Stay above canvas (--color-midnight); never blend down to it or cards read darker than the page */
               background:
@@ -58,7 +86,15 @@ export default function Grotto() {
                 <img
                   src={feature.image}
                   alt={feature.label}
-                  className="h-full w-full object-cover"
+                  className={`h-full w-full ${
+                    feature.imageFit === "contain"
+                      ? "object-contain object-center"
+                      : feature.imagePosition === "bottom"
+                        ? "object-cover object-bottom"
+                        : feature.imagePosition === "top"
+                          ? "object-cover object-[50%_44%]"
+                          : "object-cover"
+                  }`}
                 />
               ) : (
                 <div className="absolute inset-0 flex items-center justify-center opacity-20">
