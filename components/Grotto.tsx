@@ -51,7 +51,7 @@ const features: Feature[] = [
     label: "The Head",
     headline: "The Head",
     description:
-      "Your private bathroom, finished with marble tile floors, a walk-in shower, and adjustable lighting. Everything you need to freshen up and get back to it.",
+      "Your private bathroom, finished with marble tile floors, a walk-in shower, and adjustable lighting. Everything you need to reset and get back to it.",
     image: "/images/head.jpg",
     imagePosition: "top",
   },
