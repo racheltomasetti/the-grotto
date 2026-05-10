@@ -164,7 +164,7 @@ export default function CaptainsHandbookUnlock() {
                     <path d="M18 6 6 18M6 6l12 12" />
                   </svg>
                 </button>
-                <div className="space-y-4 pt-12 md:pt-14">
+                <div className="space-y-4 pt-12 max-md:pb-6 md:pb-0 md:pt-14">
                   {/* Embedded viewer: md+ only — avoids flaky mobile iframe PDF UX */}
                   <div className="hidden overflow-hidden rounded-2xl border border-white/10 bg-black/30 md:block">
                     <iframe
