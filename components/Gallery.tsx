@@ -16,7 +16,7 @@ const day: Img[] = [
 const night: Img[] = [
   { src: "/images/gallery/night/frontal-night.jpeg",    alt: "The Grotto at Night", ar: 2048 / 1536 },
   { src: "/images/gallery/night/sauna-night.jpeg",      alt: "Sauna",               ar: 2048 / 1536 },
-  { src: "/images/gallery/night/garden.JPG",            alt: "Garden",              ar: 4287 / 2847 },
+  { src: "/images/gallery/night/inner-garden.JPG",            alt: "Garden",              ar: 4287 / 2847 },
   { src: "/images/gallery/night/shower.jpeg",           alt: "Shower",              ar: 2048 / 1536 },
   { src: "/images/gallery/night/left-grotto-night.jpeg",alt: "Grotto Left",         ar: 2048 / 1536 },
   { src: "/images/gallery/night/plunge-night.jpeg",     alt: "Cold Plunge at Night",ar: 2048 / 1536 },
