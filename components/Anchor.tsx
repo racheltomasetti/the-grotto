@@ -6,8 +6,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const TOTAL_FRAMES = 140;
-const FRAME_SEQUENCE_VERSION = "2026-04-15-b";
+const TOTAL_FRAMES = 156;
+const FRAME_SEQUENCE_VERSION = "2026-05-13";
 const FRAME_PATH = (n: number) =>
   `/frames/frame-${String(n).padStart(4, "0")}.jpg?v=${FRAME_SEQUENCE_VERSION}`;
 const MOBILE_PROGRESS_MULTIPLIER = 1.2;
